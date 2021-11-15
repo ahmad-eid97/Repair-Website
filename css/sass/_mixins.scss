@@ -1,0 +1,29 @@
+/* start prefixes mixin */ 
+
+@mixin prefixes ($property, $value, $prefix) {
+    @each $one in $prefix {
+        #{"-" + $one + "-" + $property} : $value;
+    }
+    #{$property}: $value;
+}
+
+/* end prefixes mixin */
+
+/* start keyframe mixin */
+
+@mixin keyframes ($keyframe-name) {
+    @-webkit-keyframes #{$keyframe-name} {
+        @content;
+    }
+    @-moz-keyframes #{$keyframe-name} {
+        @content;
+    }
+    @-o-keyframes #{$keyframe-name} {
+        @content;
+    }
+    @keyframes #{$keyframe-name} {
+        @content;
+    }
+}
+
+/* end keyframe mixin */

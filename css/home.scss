@@ -1,0 +1,900 @@
+/* importing files */ 
+
+@import "sass/variables";
+
+@import "sass/mixins";
+
+@import "sass/helpers";
+
+/* importing files */
+
+/* start global rules */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+/* end global rules */
+/* start rules of body */
+body {
+    
+}
+/* end rules of body */
+/* start loading page */ 
+.load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+    padding-left: 48%;
+    padding-top: 20%;
+    display: block;
+    @media #{$mobilemedia} {
+        padding-left: 40%;
+        padding-top: 60%;
+    }
+    @media (min-width: 768px) and (max-width: 992px) {
+        padding-left: 38%;
+        padding-top: 48%;
+    }
+    .lds-hourglass {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+      }
+      .lds-hourglass:after {
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        margin: 6px;
+        box-sizing: border-box;
+        border: 36px solid #000;
+        border-color: #000 transparent #000 transparent;
+        animation: lds-hourglass 1.2s infinite;
+      }
+      @keyframes lds-hourglass {
+        0% {
+          transform: rotate(0);
+          animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+        50% {
+          transform: rotate(900deg);
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        100% {
+          transform: rotate(1800deg);
+        }
+      } 
+} 
+/* end loading page */ 
+/* start navbar */
+.navbar {
+    background-color: transparent;
+    position: relative;
+    @include prefixes (transition, all 0.8s ease-in-out, webkit moz o);
+    @media #{$mobilemedia} {
+        background-color: $maincolor !important;
+        padding: 10px !important;
+    }
+    @media (min-width: 768px) and (max-width: 992px) {
+        background-color: $maincolor !important;
+        padding: 15px !important;
+    }
+    @media #{$mediummedia} {
+        background-color: transparent;
+    }
+    .down {
+        color: $primarycolor;
+        position: absolute;
+        display: none;
+        cursor: pointer;
+        @media #{$mobilemedia} {
+            display: block;
+            top: 10px;
+            right: 20px;
+        }
+        @media #{$smallmedia} {
+            display: block;
+            top: 15px;
+            right: 40px;
+        }
+        @media #{$mediummedia} {
+            display: none;
+        }
+    }
+    .nav-brand {
+        cursor: pointer;
+        color: #fff;
+        font: {
+            size: 30px;
+            weight: bold;
+        }
+        i:first-of-type {
+            color: $primarycolor;
+            font-size: 40px;
+            @include prefixes (animation, rotating 1.5s infinite linear, webkit moz o);
+        }
+        i:last-of-type {
+            color: $primarycolor;
+            font-size: 25px;
+            @include prefixes (animation, rotating 1.5s infinite linear, webkit moz o);
+        }
+        @media #{$mobilemedia} {
+            font-size: 22px;
+            i:first-of-type {
+                font-size: 30px;
+            }
+            i:last-of-type {
+                font-size: 18px;
+            }
+        }
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        color: #fff;
+        @media #{$mobilemedia} {
+            display: none;
+        }
+        @media #{$smallmedia} {
+            display: none;
+        }
+        @media #{$mediummedia} {
+            display: block !important;
+        }
+    }
+    ul li {
+        display: inline-block !important;
+        margin-right: 15px;
+        cursor: pointer;
+        position: relative;
+        padding: 7px 10px;
+        margin: 5px 10px;
+        @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+        font: {
+            size: 20px;
+            weight: 600;
+        }
+        @media #{$mobilemedia} {
+            width: 100%;
+            margin-left: -10px;
+            font-size: 15px;
+        }
+        @media (min-width: 768px) and (max-width: 992px) {
+            width: 100%;
+        }
+        &:hover {
+            transform: translateY(3px);
+            .dropdown {
+                color: #fff;
+            }
+        }
+        i {
+            color: #d35400;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+    .dropdown {
+        position: absolute;
+        top: 60px;
+        right: -69px;
+        background-color: transparent;
+        width: 180px;
+        border-radius: 0 0 5px 5px;
+        display: none;
+        
+        @media #{$mobilemedia} {
+            background-color: $maincolor !important;
+            left: -8px;
+            top: 45px;
+        }
+        @media #{$smallmedia} {
+            background-color: $maincolor;
+            left: -8px;
+            top: 50px;
+        }
+        @media #{$mediummedia} {
+            background-color: transparent;
+        }
+        p {
+            a {
+                margin-left: 10px;
+                cursor: pointer;
+                border-bottom: 3px solid $maincolor;
+                @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+                &:hover {
+                    color: $primarycolor;
+                    margin-left: 15px;
+                }
+                &:first-of-type {
+                    padding-top: 10px;
+                }
+            }
+        }
+    }
+}
+// keyframes of navbar brand
+@include keyframes (rotating) {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* end navbar */
+/* start header */
+div.header {
+    background: url("../images/header/header.jpg") no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    color: #fff;
+    .layer {
+        background-color: rgba($maincolor, 0.8);
+        height: 100%;
+        .head-info {
+            width: 100%;
+            h4 {
+                padding-top: 170px;
+                font-weight: bold;
+                @media #{$mobilemedia} {
+                    padding-top: 120px;
+                    font-size: 18px;
+                }
+                @media #{$smallmedia} {
+                    padding-top: 120px;
+                    font-size: 18px;
+                }
+                @media #{$mediummedia} {
+                    padding-top: 170px;
+                    font-size: 25px;
+                }
+            }
+            h1 {
+                font-size: 50px;
+                font-weight: bold;
+                @media #{$mobilemedia} {
+                    font-size: 25px;
+                }
+                span {
+                    color: $primarycolor;
+                }
+            }
+            p {
+                width: 80%;
+                line-height: 2;
+                font-size: 20px;
+                @media #{$mobilemedia} {
+                    font-size: 15px;
+                    width: 100%;
+                }
+            }
+            button {
+                width: 220px;
+                height: 55px;
+                border-radius: 10px;
+                font-size: 26px;
+                margin-top: 20px;
+                border: 2px solid $primarycolor;
+                background-color: transparent;
+                padding-bottom: 3px;
+                color: #fff;
+                outline: none;
+                @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+                &:hover {
+                    background-color: $primarycolor;
+                    transform: translateY(5px);
+                }
+                @media #{$mobilemedia} {
+                    width: 180px;
+                    height: 50px;
+                    margin-top: 10px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .head-photo {
+        background: url(../images/header/header2.jpg) no-repeat center center /cover;
+        height: 300px;
+        width: 450px;
+        margin-top: 200px;
+        position: relative;
+        border-radius: 10px;
+        margin-bottom: 200px;
+        box-shadow: 1px 1px 10px 2px #777;
+        @media #{$mobilemedia} {
+            height: 250px;
+            width: 90%;
+            margin: 50px auto 140px;
+        }
+        @media #{$smallmedia} {
+            height: 300px;
+            width: 500px;
+            margin: 50px auto;
+        }
+        @media #{$mediummedia} {
+            height: 300px;
+            width: 450px;
+            margin-top: 200px;
+            margin-bottom: 200px;
+        }
+        &:hover {
+            span {
+                background-color: #ef6409;
+            }
+            i {
+                color: #fff;
+            }
+        }
+        .layer {
+            background-color: rgba($maincolor, 0.5);
+            h4 {
+                padding: 10px;
+            }
+        }
+        span {
+            position: absolute;
+            text-align: center;
+            line-height: 100px;
+            top: 100px;
+            left: 180px;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+            background-color: $primarycolor;
+            border: 2px solid $primarycolor;
+            i {
+                font-size: 25px;
+                color: #ccc;
+                @media #{$mobilemedia} {
+                    transform: translateY(-2px);
+                }
+            }
+            @media #{$mobilemedia} {
+                top: 35%;
+                left: 40%;
+                width: 80px;
+                height: 80px;
+                padding-left: 3px;
+                line-height: 80px;
+                text-align: center;
+            }
+            @media #{$smallmedia} {
+                top: 35%;
+                left: 40%;
+                width: 80px;
+                height: 80px;
+                padding-left: 3px;
+                line-height: 80px;
+                text-align: center;
+            }
+            @media #{$mediummedia} {
+                top: 100px;
+                left: 180px;
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+            }
+        }
+    }
+}
+/* end header */
+/* start section 1 */ 
+div.tran1 {
+    @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+}
+div.tran2 {
+    @include prefixes (transition, all 0.5s ease-in-out, webkit moz o);
+}
+div.tran3 {
+    @include prefixes (transition, all 0.8s ease-in-out, webkit moz o);
+}
+div.tran4 {
+    @include prefixes (transition, all 1s ease-in-out, webkit moz o);
+}
+div.work {
+    background-color: #fff;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 2px 2px 5px #454545;
+    transform: translateY(-80px);
+    margin-bottom: 20px;
+    @media #{$mobilemedia} {
+        font-size: 18px;
+        width: 250px;
+        margin: 0 auto 15px;
+    }
+    p {
+        color: #777;
+    }
+    p.p {
+        color: $primarycolor;
+        font-weight: bold;
+        font-size: 35px;
+    }
+}
+/* end section 1 */
+/* start section 2 */ 
+div.section2 {
+    background-color: #fff;
+    margin-bottom: 100px;
+    overflow: hidden;
+    @media #{$mobilemedia} {
+        text-align: center;
+    }
+    @media #{$smallmedia} {
+        text-align: center;
+    }
+    @media #{$mediummedia} {
+        text-align: left;
+    }
+    .doing {
+        margin-top: 50px;
+        h2 {
+            font-size: 40px;
+            font-weight: bold;
+            @media #{$mobilemedia} {
+                font-size: 30px;
+            }
+        }
+        img {
+            width: 100%;
+            margin-left: 10px;
+            height: 500px;
+        }
+        ul {
+            margin-top: 30px;
+        }
+        li {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #454545;
+            @media #{$mobilemedia} {
+                font-size: 17px;
+            }    
+            i {
+                color: $primarycolor;
+            }
+        }
+        button.one {
+            width: 170px;
+            height: 55px;
+            border-radius: 20px;
+            background-color: transparent;
+            color: $maincolor;
+            font-size: 24px;
+            margin-top: 10px;
+            border: 2px solid $primarycolor;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+            &:hover {
+                color: #fff;
+                background-color: $primarycolor;
+            }
+            @media #{$mobilemedia} {
+                font-size: 20px;
+                width: 140px;
+                height: 50px;
+            }
+        }
+        button.two {
+            @extend button.one;
+            border: 2px solid $maincolor;
+            background-color: $maincolor;
+            color: #fff;
+            &:hover {
+                color: $maincolor;
+                background-color: transparent;
+            }
+        }
+    }
+}
+/* end section 2 */
+/* start section 3 */
+div.features {
+    margin-bottom: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #ccc;
+    @media #{$mobilemedia} {
+        width: 300px;
+        margin: 20px auto;
+    }
+    i {
+        padding: 25px;
+        background-color: $maincolor;
+        color: #fff;
+        margin: 25px 10px 10px;
+        @media #{$mobilemedia} {
+            font-size: 40px;
+        }
+    }
+    h5 {
+        color: $primarycolor;
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-size: 25px;
+    }
+    p {
+        line-height: 1.7;
+        font-size: 19px;
+        color: rgb(119, 117, 117);
+    }
+    button {
+        @extend %btn;
+        background-color: $maincolor;
+        border: 2px solid $maincolor;
+        padding: 0;
+        margin-bottom: 15px;
+        font-size: 18px;
+        @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+        &:hover {
+            background-color: $primarycolor;
+            border: 2px solid $primarycolor;
+        }
+    }
+}
+/* end section 3 */
+/* start section 4 */
+div.section4 {
+    width: 100%;
+    overflow: hidden;
+    .col-lg-4 {
+        padding: 0;
+    }
+    .col-lg-8 {
+         padding: 0;
+    }
+}
+div.clients {
+    background-color: #fff;
+    position: relative;
+    padding: 110px 40px 170px 40px;
+    @media #{$mobilemedia} {
+        padding: 80px 30px 50px 40px;
+    }
+    @media #{$smallmedia} {
+        padding: 10px 30px 50px 40px;
+    }
+    @media (min-width: 992px) {
+        padding: 110px 40px 170px 40px;
+    }
+    h2 {
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        @media #{$mobilemedia} {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+    }
+    p {
+        width: 100%;
+        font-size: 20px;
+        @media #{$mobilemedia} {
+            font-size: 15px;
+        }
+    }
+    a {
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: bold;
+        color: $primarycolor;
+        @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+        i {
+            color: $maincolor;
+        }
+        &:hover {
+            color: $maincolor;
+        }
+
+        @media #{$mobilemedia} {
+            font-size: 16px;
+        }
+    }
+    &::after {
+    content: "";
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    right: -22px;
+    top: -4px;
+    display: block;
+    transform: rotate(5deg);
+    background-color: #fff;
+    z-index: 2;
+    }
+}
+div.clients2 {
+    background-color: $maincolor;
+    padding-top: 70px;
+    overflow: hidden;
+    .split {
+        background-color: #fff;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin-top: 40px;
+        width: 300px;
+        height: auto;
+        margin-left: 30px;
+        margin-bottom: 40px;
+        position: relative;
+        box-shadow: 2px 2px 10px #1a1919;
+        @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+        p {
+            color: rgb(112, 108, 108);
+            font-size: 19px;
+            @media #{$mobilemedia} {
+                font-size: 17px;
+            }
+        }
+        &:hover {
+            border: 2px solid $primarycolor;
+            img {
+                border: 2px solid $primarycolor;
+            }
+        }
+        @media #{$mobilemedia} {
+            width: 300px;
+            display: block;
+            margin: 30px 30px 65px;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #ccc;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+            position: absolute;
+            top: -22%;
+            left: 50%;
+            transform: translateX(-50%);
+            @media #{$mobilemedia} {
+                width: 150px;
+                height: 150px;
+                top: -17%;
+            }
+        }
+        h4 {
+            padding-top: 70px;
+            font-weight: bold;
+            color: $primarycolor;
+            @media #{$mobilemedia} {
+                padding-top: 85px;
+                font-size: 22px;
+            }
+        }
+        button {
+            width: 110px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid $maincolor;
+            font-size: 18px;
+            background-color: $maincolor;
+            color: #fff;
+            outline: none;
+            margin-bottom: 20px;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+            &:hover {
+                background-color: #cc5607;
+                border: 2px solid $primarycolor;
+            }
+            @media #{$mobilemedia} {
+                width: 110px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+/* end section 4 */
+/* start section 5 */
+div.section5 {
+    margin-top: 140px;
+    .deals {
+        box-shadow: 0px 2px 5px #ccc;
+        border-radius: 5px 5px 0 0;
+        margin-bottom: 30px;
+        @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+        @media #{$mobilemedia} {
+            width: 300px;
+            margin: 20px auto;
+        }
+        .detail {
+            background-color: rgb(243, 210, 150);
+            padding: 60px 10px;
+            margin-bottom: 40px;
+            border-radius: 5px 5px 0 0;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+            i {
+                margin-bottom: 15px;
+            }
+        }
+        p {
+            font-size: 18px;
+            padding: 15px;
+            width: 70%;
+            margin: auto;
+            color: #777;
+            span {
+                color: $primarycolor;
+                font-size: 40px;
+                font-weight: bold;
+            }
+            &:last-of-type {
+                color: $maincolor;
+                font-weight: bold;
+            }
+        }
+        button {
+            width: 150px;
+            height: 50px;
+            font-size: 22px;
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            background-color: transparent;
+            border: 2px solid $primarycolor;
+            color: $maincolor;
+            outline: none;
+            @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+            &:hover {
+                background-color: $primarycolor;
+                color: #fff;
+            }
+        }
+        &:hover {
+            box-shadow: 0px 0px 20px 5px #cfcccc;
+            .detail {
+                background-color: $primarycolor;
+                color: #fff;
+            }
+        }
+    }
+    .differ {
+        box-shadow: 0px 0px 20px 5px #cfcccc;
+        transform: translateY(-20px);
+        @media #{$mobilemedia} {
+            transform: translateY(0);
+        }
+        @media #{$smallmedia} {
+            transform: translateY(0);
+        }
+        @media #{$mediummedia} {
+            transform: translateY(-20px);
+        }
+        .detail {
+            background-color: $primarycolor;
+            color: #fff;
+        }
+        button {
+            background-color: $primarycolor;
+            color: #fff;
+        }
+    }
+}
+/* end section 5 */
+/* start footer */
+div.footer {
+    background: url("../images/footer/footer.jpg") no-repeat center center fixed /cover;
+    color: #fff;
+    margin-top: 50px;
+    @media #{$mobilemedia} {
+        text-align: center;
+    }
+    .layer {
+        background-color: rgba(32, 31, 31, 0.92);
+        height: 100%;
+        .foot {
+            padding-top: 80px;
+            @media #{$mobilemedia} {
+                padding-top: 40px;
+            }
+            h4 {
+                margin-bottom: 30px;
+                font-weight: bold;
+                @media #{$mobilemedia} {
+                    font-size: 22px;
+                    margin-bottom: 20px;
+                }
+            }
+            p {
+                font-size: 18px;
+                font-weight: bold;
+                letter-spacing: 0.5px;
+                color: #c9c7c7;
+                @media #{$mobilemedia} {
+                    font-size: 16px;
+                }
+            }
+            p.myinfo {
+                display: inline-block;
+            }
+            li {
+                padding-bottom: 30px;
+                font-size: 18px;
+                font-weight: 600px;
+                color: #c9c7c7;
+                @media #{$mobilemedia} {
+                    padding-bottom: 20px;
+                    font-size: 17px;
+                }
+            }
+            i {
+                margin-right: 10px;
+            }
+            i.vac {
+                font-size: 25px;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                margin-right: 10px;
+                margin-top: 20px;
+                background-color: #555353;
+                border-radius: 50%;
+                cursor: pointer;
+                transform: translateY(100px);
+                opacity: 0;
+                @include prefixes (transition, all 0.3s ease-in-out, webkit moz o);
+                @media #{$mobilemedia} {
+                    font-size: 22px;
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+                    line-height: 40px;
+                }
+                &:hover {
+                    background-color: #777777;
+                }
+            }
+            i.location {
+                font-size: 20px;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                background-color: #555353;
+                border-radius: 50%;
+            }
+        }
+    }
+    p.end {
+        font-size: 20px;
+        font-weight: 600;
+        padding-top: 30px;
+        padding-bottom: 40px;
+        margin: 0;
+        color: #e4e2e2;
+        @media #{$mobilemedia} {
+            font-size: 16px;
+        }
+        span {
+            color: $primarycolor;
+        }
+        i {
+            padding: 5px;
+            color: $primarycolor;
+        }
+    }
+}
+/* end footer */
